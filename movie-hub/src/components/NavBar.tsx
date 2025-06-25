@@ -1,22 +1,14 @@
-
-import { ClientOnly, HStack, IconButton, Image, Skeleton, Text } from "@chakra-ui/react"
-import { useColorMode } from "./ui/color-mode.tsx"
-import { LuMoon, LuSun } from "react-icons/lu"
+import { HStack, Image } from "@chakra-ui/react"
 
 import logo from '../assets/movie-svgrepo-com.svg'
+import ColorModeSwitch from "./ColorModeSwitch"
 
-const NavBar = () => {
-  const { toggleColorMode, colorMode } = useColorMode()
+
+function NavBar() {
   return (
-
-    <HStack>
-      <Image src={logo} boxSize={'60px'}/>
-      <Text>This is navbar</Text>
-      <ClientOnly fallback={<Skeleton boxSize="8" />}>
-        <IconButton onClick={toggleColorMode} variant="outline" size="sm">
-          {colorMode === "light" ? <LuSun /> : <LuMoon />}
-        </IconButton>
-      </ClientOnly>
+    <HStack justifyContent={'space-between'} padding={'10px'}>
+      <Image src={logo} boxSize='60px' />
+      <ColorModeSwitch/>
     </HStack>
   )
 }
