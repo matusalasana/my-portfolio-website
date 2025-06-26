@@ -3,7 +3,7 @@ import { Grid, GridItem } from '@chakra-ui/react'
 
 import './App.css'
 import NavBar from './components/NavBar'
-import MoviesPoasters from './components/MoviesPoasters'
+import MovieCard from './components/MovieCard'
 
 function App() {
 
@@ -20,8 +20,8 @@ function App() {
       <GridItem display={{base:'none',lg:'block'}} area={'aside'}>
         aside
       </GridItem>
-      <GridItem area={'main'} >
-        <MoviesPoasters/>
+      <GridItem gridTemplateColumns={3} area={'main'} >
+        <MovieCard/>
       </GridItem>
 
     </Grid>

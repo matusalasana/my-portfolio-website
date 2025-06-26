@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
-interface Movie {
-  poster_path: string;
-  // Add more fields as needed
+export interface Movie {
+    id:number;
+    title:string;
+    poster_path: string;
+    // Add more fields as needed
 }
 
 const useMovies=()=> {
