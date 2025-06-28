@@ -4,7 +4,7 @@ import { Grid, GridItem } from '@chakra-ui/react'
 import './App.css'
 import NavBar from './components/NavBar'
 import MovieCard from './components/MovieCard'
-import MovieSkeleton from './components/MovieSkeleton'
+import GenreList from './components/GenreList'
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
         <NavBar/>
       </GridItem>
       <GridItem display={{base:'none',lg:'block'}} area={'aside'}>
-        aside
+        <GenreList/>
       </GridItem>
       <GridItem gridTemplateColumns={3} area={'main'} >
         <MovieCard/>
