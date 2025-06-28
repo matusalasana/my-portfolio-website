@@ -4,6 +4,7 @@ import { Grid, GridItem } from '@chakra-ui/react'
 import './App.css'
 import NavBar from './components/NavBar'
 import MovieCard from './components/MovieCard'
+import MovieSkeleton from './components/MovieSkeleton'
 
 function App() {
 
