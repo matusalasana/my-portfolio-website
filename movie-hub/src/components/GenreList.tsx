@@ -1,3 +1,4 @@
+import { Image } from "@chakra-ui/react"
 import useGenre from "./hooks/useGenres"
 
 function GenreList() {
@@ -5,7 +6,7 @@ function GenreList() {
   return (
     <ul>
         {genres.map(genre=>
-            <li key={genre.id}>
+            <li key={genre.id}><Image src={genre.image_background} />
                 {genre.name}
             </li>)}
 

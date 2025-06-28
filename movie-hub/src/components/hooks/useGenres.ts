@@ -2,7 +2,8 @@ import { useState,useEffect } from "react";
 
 export interface Genre{
     name:string;
-    id:number
+    id:number;
+    image_background:string;
 }
 
 const useGenre=()=> {

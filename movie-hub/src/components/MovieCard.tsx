@@ -1,7 +1,6 @@
 
-import { Box, Card, CardBody, CardTitle, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Card, CardBody, CardTitle,AbsoluteCenter, For, HStack, ProgressCircle, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import useMovies from "./hooks/useMovies";
-import { RatingGroup } from "@chakra-ui/react"
 import MovieSkeleton from "./MovieSkeleton";
 
 
@@ -28,13 +27,18 @@ function MovieCard() {
                 <Card.Description padding={'5px'}>
                     {movie.overview}
                 </Card.Description>
-                <Box padding={'5px'}>
-                    <RatingGroup.Root colorPalette={'yellow'} readOnly count={1} defaultValue={3} size="sm">
-                    <RatingGroup.HiddenInput />
-                    <RatingGroup.Control />
-                    </RatingGroup.Root>{" "}
-                    {Number(movie.vote_average.toFixed(1))}{` (${movie.vote_count})`}
-                </Box>
+                <HStack padding={'5px'}>
+                    <ProgressCircle.Root colorPalette={Number(movie.vote_average.toFixed(1))*10>=70 ?'green':'yellow'}  key={movie.id} value={Number(movie.vote_average.toFixed(1))*10} >
+                        <ProgressCircle.Circle>
+                            <ProgressCircle.Track />
+                            <ProgressCircle.Range />
+                        </ProgressCircle.Circle>
+                        <AbsoluteCenter>
+                            <ProgressCircle.ValueText />
+                        </AbsoluteCenter>
+                    </ProgressCircle.Root>
+                </HStack>
+                
             </Card.Root>)}
     </SimpleGrid>
     
