@@ -1,5 +1,5 @@
 
-import { Box, Card, CardBody, CardTitle,AbsoluteCenter, For, HStack, ProgressCircle, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import {Card, CardBody, CardTitle,AbsoluteCenter,HStack, ProgressCircle, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import useMovies from "./hooks/useMovies";
 import MovieSkeleton from "./MovieSkeleton";
 
@@ -37,8 +37,7 @@ function MovieCard() {
                             <ProgressCircle.ValueText />
                         </AbsoluteCenter>
                     </ProgressCircle.Root>
-                </HStack>
-                
+                </HStack>                
             </Card.Root>)}
     </SimpleGrid>
     
