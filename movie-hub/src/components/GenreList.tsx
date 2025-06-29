@@ -1,7 +1,8 @@
+import { HStack, Skeleton, SkeletonCircle, Stack } from "@chakra-ui/react";
 import useGenre from "./hooks/useGenres"
 
 function Genre() {
-    const {genres}=useGenre()
+    const {genres,isLoading,err}=useGenre()
     const genreImages: { [key: number]: string } = {
         28: "public/Movie thumbnails/action-movie-thumbnail.jpg",
         12: "public/Movie thumbnails/adventure-movie-thumbnail.jpg",
@@ -25,6 +26,106 @@ function Genre() {
     };
 
   return (
+    <>
+    {err&&err}
+    {isLoading==true&&
+    <>
+    <HStack marginTop={'15px'} marginBottom={'10px'} display={'flex'} gap="5px">
+      <Stack flex='1'>
+      <SkeletonCircle borderRadius={'2px'} size="8" />
+      </Stack>
+      <Stack flex='2'>
+        <Skeleton height="30px" width={'80%'}/>
+      </Stack>
+    </HStack>
+    <HStack marginBottom={'10px'} display={'flex'} gap="5px">
+      <Stack flex='1'>
+      <SkeletonCircle borderRadius={'2px'} size="8" />
+      </Stack>
+      <Stack flex='2'>
+        <Skeleton height="30px" width={'80%'}/>
+      </Stack>
+    </HStack>
+    <HStack marginBottom={'10px'} display={'flex'} gap="5px">
+      <Stack flex='1'>
+      <SkeletonCircle borderRadius={'2px'} size="8" />
+      </Stack>
+      <Stack flex='2'>
+        <Skeleton height="30px" width={'80%'}/>
+      </Stack>
+    </HStack>
+    <HStack marginBottom={'10px'} display={'flex'} gap="5px">
+      <Stack flex='1'>
+      <SkeletonCircle borderRadius={'2px'} size="8" />
+      </Stack>
+      <Stack flex='2'>
+        <Skeleton height="30px" width={'80%'}/>
+      </Stack>
+    </HStack>
+    <HStack marginBottom={'10px'} display={'flex'} gap="5px">
+      <Stack flex='1'>
+      <SkeletonCircle borderRadius={'2px'} size="8" />
+      </Stack>
+      <Stack flex='2'>
+        <Skeleton height="30px" width={'80%'}/>
+      </Stack>
+    </HStack>
+    <HStack marginBottom={'10px'} display={'flex'} gap="5px">
+      <Stack flex='1'>
+      <SkeletonCircle borderRadius={'2px'} size="8" />
+      </Stack>
+      <Stack flex='2'>
+        <Skeleton height="30px" width={'80%'}/>
+      </Stack>
+    </HStack>
+    <HStack marginBottom={'10px'} display={'flex'} gap="5px">
+      <Stack flex='1'>
+      <SkeletonCircle borderRadius={'2px'} size="8" />
+      </Stack>
+      <Stack flex='2'>
+        <Skeleton height="30px" width={'80%'}/>
+      </Stack>
+    </HStack>
+    <HStack marginBottom={'10px'} display={'flex'} gap="5px">
+      <Stack flex='1'>
+      <SkeletonCircle borderRadius={'2px'} size="8" />
+      </Stack>
+      <Stack flex='2'>
+        <Skeleton height="30px" width={'80%'}/>
+      </Stack>
+    </HStack>
+    <HStack marginBottom={'10px'} display={'flex'} gap="5px">
+      <Stack flex='1'>
+      <SkeletonCircle borderRadius={'2px'} size="8" />
+      </Stack>
+      <Stack flex='2'>
+        <Skeleton height="30px" width={'80%'}/>
+      </Stack>
+    </HStack>
+    <HStack marginBottom={'10px'} display={'flex'} gap="5px">
+      <Stack flex='1'>
+      <SkeletonCircle borderRadius={'2px'} size="8" />
+      </Stack>
+      <Stack flex='2'>
+        <Skeleton height="30px" width={'80%'}/>
+      </Stack>
+    </HStack>
+    <HStack marginBottom={'10px'} display={'flex'} gap="5px">
+      <Stack flex='1'>
+      <SkeletonCircle borderRadius={'2px'} size="8" />
+      </Stack>
+      <Stack flex='2'>
+        <Skeleton height="30px" width={'80%'}/>
+      </Stack>
+    </HStack>
+    <HStack marginBottom={'10px'} display={'flex'} gap="5px">
+      <Stack flex='1'>
+      <SkeletonCircle borderRadius={'2px'} size="8" />
+      </Stack>
+      <Stack flex='2'>
+        <Skeleton height="30px" width={'80%'}/>
+      </Stack>
+    </HStack></>}
     <ul>
         
         {genres.map(genre=>
@@ -37,6 +138,7 @@ function Genre() {
           </li>)}
 
     </ul>
+    </>
   )
 }
 
