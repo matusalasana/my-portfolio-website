@@ -1,17 +1,18 @@
 
-import { useState,useEffect } from 'react'
+import { useState } from 'react'
 import './App.css'
 
-import {Box, 
+import {
         Grid, 
         GridItem, 
-        Heading, 
         Text, 
         Image,
         Card, 
         CardBody, 
         CardTitle,
         AbsoluteCenter,
+        VStack,
+        Spinner,
         HStack, 
         ProgressCircle, 
         SimpleGrid } from '@chakra-ui/react'
@@ -20,7 +21,6 @@ import MovieSkeleton from './components/MovieSkeleton';
 
 import useMovies from './components/hooks/useMovies'
 import NavBar from './components/NavBar'
-import MovieCard from './components/MovieCard'
 import GenreList from './components/GenreList'
 import {type Genre } from './components/hooks/useGenres'
 
@@ -33,8 +33,8 @@ function App() {
     const skeletons=[1,2,3,4,5,6];
 
 
-if (isLoading) return <Text>Genre Loading</Text>
 
+if (err) return <Text color={'red.500'}>{err}</Text>
   return (
     
     <Grid templateAreas={{
@@ -47,12 +47,16 @@ if (isLoading) return <Text>Genre Loading</Text>
       </GridItem>
 
       <GridItem display={{base:'none',lg:'block'}} area={'aside'}>
+        {isLoading && <VStack marginTop={'100px'} colorPalette="teal">
+                        <Spinner color="colorPalette.600" />
+                        <Text color="colorPalette.600">Loading the genres...</Text>
+                      </VStack>}
         <GenreList onSelectGenre={(genre)=>setSelectedGenre(genre)} />
       </GridItem>
 
       <GridItem gridTemplateColumns={3} area={'main'} >
 
-        <SimpleGrid columns={{ base: 2, md: 3, lg: 4 }} gap={{base:3,md:4,lg:6}} p={4} >
+        <SimpleGrid columns={{ base: 2, md: 3, lg: 3 }} gap={{base:3,md:4,lg:6}} p={4} >
         {isLoading&& skeletons.map(skeleton=><MovieSkeleton key={skeleton} />)}
         {movies.map(movie=>
                     <Card.Root borderRadius={10} overflow={'hidden'} key={movie.id}>

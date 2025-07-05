@@ -1,4 +1,4 @@
-import { Button, Text, Skeleton, Image } from "@chakra-ui/react";
+import { Button, Text, Skeleton } from "@chakra-ui/react";
 import useGenres from "./hooks/useGenres"
 import { type Genre } from "./hooks/useGenres";
 
@@ -28,7 +28,7 @@ function GenreList({onSelectGenre}:Props) {
                       marginBottom={'10px'}
                       padding={'5px'}
                       onClick={()=>onSelectGenre(genre)} 
-                      // variant={genre.id ? "solid" : "ghost"} 
+                      variant={genre.id?"solid":"ghost"} 
                       key={genre.id} 
                       fontSize={'lg'} 
                       flexDirection={'column'}
