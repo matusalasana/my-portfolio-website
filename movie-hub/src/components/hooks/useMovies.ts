@@ -7,36 +7,35 @@ export interface Movie {
     release_date:string;
     vote_average:number;
     overview:string;
-    vote_count:number;
-    original_title:string;
-    // Add more fields as needed
 }
 
-const useMovies=()=> {
+const useMovies=(genreId:number)=> {
+
   const [movies, setMovies] = useState<Movie[]>([]);
   const [err,setErr]=useState('');
   const [isLoading,setLoading]=useState(false)
-
-  
-  const getMovie = () => {
-    {setLoading(true)}
-    fetch("https://api.themoviedb.org/3/discover/movie?api_key=4c0d21331fa20cabab38fd6698ec8aa9")
-      .then((res) =>res.json())
-      .then((json) => {
-        setMovies(json.results),
-        setLoading(false)})
-      .catch(err=>{
-        setErr(err.message),
-        setLoading(false)})
-
-  };
-  
-
     
     useEffect(() => {
+      const getMovie = () => {
+        {setLoading(true)}
+        const url = genreId
+          ? `https://api.themoviedb.org/3/discover/movie?api_key=4c0d21331fa20cabab38fd6698ec8aa9&with_genres=${genreId}&language=en-US`
+          : `https://api.themoviedb.org/3/movie/popular?api_key=4c0d21331fa20cabab38fd6698ec8aa9&language=en-US`;
+
+        fetch(url)
+          .then((res) =>res.json())
+          .then((json) => {
+            setMovies(json.results),
+            setLoading(false)})
+          .catch(err=>{
+            setErr(err.message),
+            setLoading(false)})
+
+  };
+
       getMovie();
       document.title='https://www.movies-hub.com'
-    }, [])
+    }, [genreId])
 
             return {movies,err,isLoading}
 
@@ -47,3 +46,4 @@ const useMovies=()=> {
 
   
   export default useMovies
+
