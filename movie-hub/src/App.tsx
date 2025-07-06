@@ -1,7 +1,6 @@
 
 import { useState } from 'react'
 import './App.css'
-
 import {
         Grid, 
         GridItem, 
@@ -11,8 +10,6 @@ import {
         CardBody, 
         CardTitle,
         AbsoluteCenter,
-        VStack,
-        Spinner,
         HStack, 
         ProgressCircle, 
         SimpleGrid } from '@chakra-ui/react'
@@ -26,15 +23,14 @@ import {type Genre } from './components/hooks/useGenres'
 
 
 function App() {
+
   const [selectedGenre,setSelectedGenre]=useState<Genre | null>(null)
   const {movies,isLoading,err}=useMovies(Number(selectedGenre?.id))
-
-
-    const skeletons=[1,2,3,4,5,6];
-
+  const skeletons=[1,2,3,4,5,6,7,8,9];
 
 
 if (err) return <Text color={'red.500'}>{err}</Text>
+
   return (
     
     <Grid templateAreas={{
@@ -47,18 +43,19 @@ if (err) return <Text color={'red.500'}>{err}</Text>
       </GridItem>
 
       <GridItem display={{base:'none',lg:'block'}} area={'aside'}>
-        {isLoading && <VStack marginTop={'100px'} colorPalette="teal">
-                        <Spinner color="colorPalette.600" />
-                        <Text color="colorPalette.600">Loading the genres...</Text>
-                      </VStack>}
-        <GenreList onSelectGenre={(genre)=>setSelectedGenre(genre)} />
+        
+        <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre)=>setSelectedGenre(genre)} />
+
       </GridItem>
 
       <GridItem gridTemplateColumns={3} area={'main'} >
 
+
         <SimpleGrid columns={{ base: 2, md: 3, lg: 3 }} gap={{base:3,md:4,lg:6}} p={4} >
         {isLoading&& skeletons.map(skeleton=><MovieSkeleton key={skeleton} />)}
         {movies.map(movie=>
+        
+                  Number(movie.vote_average)*10>=Number(movie.vote_average)*10 &&  
                     <Card.Root borderRadius={10} overflow={'hidden'} key={movie.id}>
                         <Image  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
                         <CardBody spaceY={"10px"}>

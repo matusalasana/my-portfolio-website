@@ -15,7 +15,7 @@ const useGenres=()=> {
 
     
     useEffect(() => {
-      const getMovie = () => {
+      const getGenre = () => {
         {setLoading(true)}
         fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=4c0d21331fa20cabab38fd6698ec8aa9&language=en-US")
           .then((res) =>res.json())
@@ -27,7 +27,7 @@ const useGenres=()=> {
             setLoading(false)})
       };
 
-    getMovie(); 
+    getGenre(); 
     }, [])
 
     
