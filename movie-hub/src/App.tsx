@@ -20,26 +20,47 @@ import useMovies from './components/hooks/useMovies'
 import NavBar from './components/NavBar'
 import GenreList from './components/GenreList'
 import {type Genre } from './components/hooks/useGenres'
+import SortingMovies from './components/SortingMovies'
 
 
 function App() {
 
   const [selectedGenre,setSelectedGenre]=useState<Genre | null>(null)
+  const [sortOrder, setSortOrder] = useState<string>('');
+
   const {movies,isLoading,err}=useMovies(Number(selectedGenre?.id))
   const skeletons=[1,2,3,4,5,6,7,8,9];
 
+  const sortedMovies = [...movies].sort((a, b) => {
+    switch (sortOrder) {
+      case 'title':
+        return a.title.localeCompare(b.title);
+      case 'new':
+        return new Date(b.release_date).getTime() - new Date(a.release_date).getTime();
+      case 'old':
+        return new Date(a.release_date).getTime() - new Date(b.release_date).getTime();
+      case 'most-rated':
+        return b.vote_average - a.vote_average;
+      case 'least-rated':
+        return a.vote_average - b.vote_average;
+      default:
+        return 0;
+    }
+  });
+
+
 
 if (err) return <Text color={'red.500'}>{err}</Text>
-
   return (
     
     <Grid templateAreas={{
       base:`'nav''main'`,
       lg:`'nav nav''aside main'`
     }}>
-
+      
       <GridItem area={'nav'}>
         <NavBar/>
+        <SortingMovies onSelectSortOrder={setSortOrder}/>
       </GridItem>
 
       <GridItem display={{base:'none',lg:'block'}} area={'aside'}>
@@ -53,7 +74,7 @@ if (err) return <Text color={'red.500'}>{err}</Text>
 
         <SimpleGrid columns={{ base: 2, md: 3, lg: 3 }} gap={{base:3,md:4,lg:6}} p={4} >
         {isLoading&& skeletons.map(skeleton=><MovieSkeleton key={skeleton} />)}
-        {movies.map(movie=>
+        {sortedMovies.map(movie=>
         
                   Number(movie.vote_average)*10>=Number(movie.vote_average)*10 &&  
                     <Card.Root borderRadius={10} overflow={'hidden'} key={movie.id}>

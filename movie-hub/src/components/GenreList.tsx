@@ -24,8 +24,9 @@ function GenreList({onSelectGenre,selectedGenre}:Props) {
                 <ul>
                   <li>
                 
-                    <Button 
-                      backgroundColor={selectedGenre?.id === genre.id ? 'blue.500' : 'normal'}                      
+                    <Button
+                      className='genre-btn' 
+                      backgroundColor={selectedGenre?.id === genre.id ? 'blue' : 'normal'}                      
                       marginLeft={'10px'}
                       marginBottom={'10px'}
                       padding={'5px'}
