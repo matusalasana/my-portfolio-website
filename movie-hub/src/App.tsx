@@ -21,17 +21,25 @@ import NavBar from './components/NavBar'
 import GenreList from './components/GenreList'
 import {type Genre } from './components/hooks/useGenres'
 import SortingMovies from './components/SortingMovies'
+import useSearchMovies from './components/hooks/useSearchMovies';
 
 
 function App() {
 
+  
+
   const [selectedGenre,setSelectedGenre]=useState<Genre | null>(null)
   const [sortOrder, setSortOrder] = useState<string>('');
+  const [searchText,setSearchText]=useState<string>('');
 
-  const {movies,isLoading,err}=useMovies(Number(selectedGenre?.id))
+  const {movies:genreMovies,isLoading:loadingGenre,err:errGenre}=useMovies(Number(selectedGenre?.id))
+  const {movies:searchMovies,isLoading:isSearchLoading,err:searchErr}=useSearchMovies(searchText)
   const skeletons=[1,2,3,4,5,6,7,8,9];
+  const isSearching = searchText.trim().length > 0;
+  const moviesToShow = isSearching ? searchMovies : genreMovies;
 
-  const sortedMovies = [...movies].sort((a, b) => {
+
+  const sortedMovies = [...moviesToShow].sort((a, b) => {
     switch (sortOrder) {
       case 'title':
         return a.title.localeCompare(b.title);
@@ -48,9 +56,19 @@ function App() {
     }
   });
 
+  const filteredMovies = sortedMovies.filter(movie =>
+    movie.title.toLowerCase().includes(searchText.toLowerCase())
+  );
 
 
-if (err) return <Text color={'red.500'}>{err}</Text>
+
+if (errGenre || searchErr)
+  return <Text color="red.500">{errGenre || searchErr}</Text>;
+
+
+
+
+
   return (
     
     <Grid templateAreas={{
@@ -59,7 +77,7 @@ if (err) return <Text color={'red.500'}>{err}</Text>
     }}>
       
       <GridItem area={'nav'}>
-        <NavBar/>
+        <NavBar onSearch={setSearchText}/>
         <SortingMovies onSelectSortOrder={setSortOrder}/>
       </GridItem>
 
@@ -73,8 +91,8 @@ if (err) return <Text color={'red.500'}>{err}</Text>
 
 
         <SimpleGrid columns={{ base: 2, md: 3, lg: 3 }} gap={{base:3,md:4,lg:6}} p={4} >
-        {isLoading&& skeletons.map(skeleton=><MovieSkeleton key={skeleton} />)}
-        {sortedMovies.map(movie=>
+        {(loadingGenre||isSearchLoading)&& skeletons.map(skeleton=><MovieSkeleton key={skeleton} />)}
+        {filteredMovies.map(movie=>
         
                   Number(movie.vote_average)*10>=Number(movie.vote_average)*10 &&  
                     <Card.Root borderRadius={10} overflow={'hidden'} key={movie.id}>
