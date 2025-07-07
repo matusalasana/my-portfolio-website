@@ -25,13 +25,10 @@ function GenreList({onSelectGenre,selectedGenre}:Props) {
                   <li>
                 
                     <Button
-                      className='genre-btn' 
+                      className="genre-button"
                       backgroundColor={selectedGenre?.id === genre.id ? 'blue' : 'normal'}                      
-                      marginLeft={'10px'}
-                      marginBottom={'10px'}
-                      padding={'5px'}
                       onClick={()=>onSelectGenre(genre)}  
-                      variant={'outline'}
+                      variant={'ghost'}
                       key={genre.id} 
                       fontSize={'lg'} 
                       flexDirection={'column'}

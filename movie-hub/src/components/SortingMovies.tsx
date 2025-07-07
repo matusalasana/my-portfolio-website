@@ -17,7 +17,7 @@ function SortingMovies({ onSelectSortOrder }: Props) {
   };
 
   return (
-    <select onChange={handleChange}>
+    <select className="sort-selector" onChange={handleChange}>
       {sortOrders.map((order) => (
         <option key={order.value} value={order.value}>
           {order.label}
