@@ -22,6 +22,7 @@ import GenreList from './components/GenreList'
 import {type Genre } from './components/hooks/useGenres'
 import SortingMovies from './components/SortingMovies'
 import useSearchMovies from './components/hooks/useSearchMovies';
+import MovieHeading from './components/MovieHeading';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
   const [selectedGenre,setSelectedGenre]=useState<Genre | null>(null)
   const [sortOrder, setSortOrder] = useState<string>('');
   const [searchText,setSearchText]=useState<string>('');
+  const [genretitle,setgenretitle]=useState<string>('')
 
   const {movies:genreMovies,isLoading:loadingGenre,err:errGenre}=useMovies(Number(selectedGenre?.id))
   const {movies:searchMovies,isLoading:isSearchLoading,err:searchErr}=useSearchMovies(searchText)
@@ -83,13 +85,13 @@ if (errGenre || searchErr)
 
       <GridItem display={{base:'none',lg:'block'}} area={'aside'}>
         
-        <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre)=>setSelectedGenre(genre)} />
+        <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre)=>{setSelectedGenre(genre),setgenretitle(genre.name)}} />
 
       </GridItem>
 
       <GridItem gridTemplateColumns={3} area={'main'} >
 
-
+        <MovieHeading genreTitle={genretitle}/>
         <SimpleGrid columns={{ base: 2, md: 3, lg: 3 }} gap={{base:3,md:4,lg:6}} p={4} >
         {(loadingGenre||isSearchLoading)&& skeletons.map(skeleton=><MovieSkeleton key={skeleton} />)}
         {filteredMovies.map(movie=>
