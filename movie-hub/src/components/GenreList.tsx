@@ -1,4 +1,4 @@
-import { Button, Skeleton,Text } from "@chakra-ui/react";
+import { Button, Heading, Skeleton,Text } from "@chakra-ui/react";
 import useGenres from "./hooks/useGenres"
 import { type Genre } from "./hooks/useGenres";
 
@@ -19,7 +19,7 @@ function GenreList({onSelectGenre,selectedGenre}:Props) {
   <>
     
     {err && <Text color={'red.500'}>{err}</Text>}
-    
+    <Heading fontSize={'2xl'} marginBottom={3} marginLeft={'10px'} >Genres</Heading>
     {genres.map(genre=>
                 <ul>
                   <li>

@@ -80,7 +80,7 @@ if (errGenre || searchErr)
       
       <GridItem area={'nav'}>
         <NavBar onSearch={setSearchText}/>
-        <SortingMovies onSelectSortOrder={setSortOrder}/>
+        
       </GridItem>
 
       <GridItem display={{base:'none',lg:'block'}} area={'aside'}>
@@ -92,6 +92,7 @@ if (errGenre || searchErr)
       <GridItem gridTemplateColumns={3} area={'main'} >
 
         <MovieHeading genreTitle={genretitle}/>
+        <SortingMovies onSelectSortOrder={setSortOrder}/>
         <SimpleGrid columns={{ base: 2, md: 3, lg: 3 }} gap={{base:3,md:4,lg:6}} p={4} >
         {(loadingGenre||isSearchLoading)&& skeletons.map(skeleton=><MovieSkeleton key={skeleton} />)}
         {filteredMovies.map(movie=>
@@ -105,9 +106,6 @@ if (errGenre || searchErr)
                             <Text textAlign={'center'} color={'gray.500'} fontSize={{base:'8px',sm:'xs',lg:'1xl'}}>{movie.release_date}</Text>
                             
                         </CardBody>
-                        <Card.Description padding={'5px'}>
-                            {movie.overview}
-                        </Card.Description>
                         <HStack padding={'5px'}>
                             <ProgressCircle.Root colorPalette={Number(movie.vote_average.toFixed(1))*10>=70 ?'green':'yellow'}  key={movie.id} value={Number(movie.vote_average.toFixed(1))*10} >
                                 <ProgressCircle.Circle>

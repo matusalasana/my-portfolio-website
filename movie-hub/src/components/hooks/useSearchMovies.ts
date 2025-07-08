@@ -14,11 +14,12 @@ const useSearchMovies = (query: string) => {
       return;
     }
 
-    const searchMovies = () => {
+    const searchMovies = (genreId:number) => {
       setLoading(true);
-      fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=4c0d21331fa20cabab38fd6698ec8aa9&query=${encodeURIComponent(query)}&language=en-US`
-      )
+      const url = genreId
+          ? `https://api.themoviedb.org/3/search/movie?api_key=4c0d21331fa20cabab38fd6698ec8aa9&query=${encodeURIComponent(query)}&with_genres=${genreId}&language=en-US`
+          : `https://api.themoviedb.org/3/search/movie?api_key=4c0d21331fa20cabab38fd6698ec8aa9&query=${encodeURIComponent(query)}&language=en-US`;
+      fetch(url)
         .then((res) => res.json())
         .then((json) => {
           setMovies(json.results || []);
@@ -30,7 +31,7 @@ const useSearchMovies = (query: string) => {
         });
     };
 
-    searchMovies();
+    searchMovies(28);
 
   }, [query]);
 
