@@ -8,13 +8,15 @@
     margin-top: 5px;
 }
 
+.genre-button:hover{
+    border-color: #f0f0f0;
+}
+
 .sort-selector{
     height: 30px;
     padding: 5px;
     border-radius: 5px;
-    margin: 10px;
     width: 150px;
-    margin-left: 18px;
 }
 
 form{
@@ -25,4 +27,17 @@ form{
     color: #f0f0f0;
     text-decoration:underline;
     margin-left: 10px;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.sortby{
+    margin-left: 18px;
 }

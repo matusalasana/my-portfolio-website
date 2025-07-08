@@ -20,7 +20,7 @@ function ColorModeSwitch (){
                     <Switch.Thumb />
                 </Switch.Control>
                 
-                <Switch.Label>{status}</Switch.Label>
+                <Switch.Label key={status}>{colorMode}</Switch.Label>
             </Switch.Root>
         </HStack>
     )

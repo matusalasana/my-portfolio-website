@@ -20,15 +20,13 @@ function GenreList({onSelectGenre,selectedGenre}:Props) {
     
     {err && <Text color={'red.500'}>{err}</Text>}
     <Heading fontSize={'2xl'} marginBottom={3} marginLeft={'10px'} >Genres</Heading>
+    
     {genres.map(genre=>
-                <ul>
-                  <li>
-                
                     <Button
                       className="genre-button"
-                      backgroundColor={selectedGenre?.id === genre.id ? 'blue' : 'normal'}                      
+                      backgroundColor={selectedGenre?.id === genre.id ? 'orange.500' : 'normal'}                      
                       onClick={()=>onSelectGenre(genre)}  
-                      variant={'ghost'}
+                      variant={'outline'}
                       key={genre.id} 
                       fontSize={'lg'} 
                       flexDirection={'column'}
@@ -36,8 +34,7 @@ function GenreList({onSelectGenre,selectedGenre}:Props) {
                     >
                       {genre.name}
                     </Button>
-                  </li>
-                </ul>)}
+                  )}
 
 
   </>

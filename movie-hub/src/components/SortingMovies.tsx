@@ -1,3 +1,5 @@
+import { HStack } from "@chakra-ui/react";
+
 interface Props {
   onSelectSortOrder: (order: string) => void;
 }
@@ -17,6 +19,8 @@ function SortingMovies({ onSelectSortOrder }: Props) {
   };
 
   return (
+    <HStack display={'flex'} className="sortby">
+    <p>Sort by:</p>
     <select className="sort-selector" onChange={handleChange}>
       {sortOrders.map((order) => (
         <option key={order.value} value={order.value}>
@@ -24,6 +28,7 @@ function SortingMovies({ onSelectSortOrder }: Props) {
         </option>
       ))}
     </select>
+    </HStack>
   );
 }
 

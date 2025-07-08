@@ -33,7 +33,7 @@ const useMovies=(genreId:number)=> {
   };
 
       getMovie();
-      document.title='https://www.themoviehub.com'
+      document.title='The Movie Hub'
     }, [genreId])
 
             return {movies,err,isLoading}

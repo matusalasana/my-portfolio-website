@@ -1,8 +1,7 @@
 
 import { useState } from 'react'
 import './App.css'
-import {
-        Box, 
+import { 
         Heading,
         Grid, 
         GridItem, 
@@ -79,27 +78,22 @@ if (errGenre || searchErr)
     
     <Grid templateAreas={{
       base:`'nav''main'`,
-      lg:`'nav nav''aside main'`
+      lg:`'nav nav''main'`
     }}>
       
       <GridItem area={'nav'}>
         <NavBar onSearch={setSearchText}/>
-        
-      </GridItem>
-
-      <GridItem display={{base:'none',lg:'block'}} area={'aside'}>
-        
-        <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre)=>{setSelectedGenre(genre),setgenretitle(genre.name)}} />
-
       </GridItem>
 
       <GridItem gridTemplateColumns={3} area={'main'} >
+
+        <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre)=>{setSelectedGenre(genre),setgenretitle(genre.name)}} />
 
         <MovieHeading genreTitle={genretitle}/>
 
         <SortingMovies onSelectSortOrder={setSortOrder}/>
 
-        <SimpleGrid columns={{ base: 2, md: 3, lg: 3,xl:4 }} gap={{base:3,md:4,lg:6}} p={4} >
+        <SimpleGrid columns={{ base: 2, md: 3, lg: 4,xl:5 }} gap={{base:3,md:4,lg:6}} p={4} >
           {(loadingGenre||isSearchLoading)&& skeletons.map(skeleton=><MovieSkeleton key={skeleton} />)}
           {filteredMovies.map(movie=>
         
@@ -125,15 +119,15 @@ if (errGenre || searchErr)
                         </HStack>                
                     </Card.Root>)}
         </SimpleGrid>
-
       </GridItem>
-
     </Grid>
+
     <Separator/>
-    <Box color={'gray.400'} display="flex" alignItems={'center'} justifyContent={'center'} margin={'20px'} as="footer">
-      <Heading marginRight={'10px'} textAlign={'center'} fontSize={'sm'}>© 2025 Movies Hub. Created by Sana Matusala</Heading>
-      <a className='about-me' href="https://github.com/matusalasana">About me</a>
-    </Box>
+
+    <footer className='footer'>
+      <a className='about-me' href="https://github.com/matusalasana" >About me</a>
+      <Heading color={'gray.500'} marginRight={'10px'} textAlign={'center'} fontSize={'sm'}>© 2025 The Movie Hub. Created by Sana Matusala</Heading>
+    </footer>
     </>
 
   )
