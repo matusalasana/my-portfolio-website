@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import './App.css'
 import {
+        Box, 
+        Heading,
         Grid, 
         GridItem, 
         Text, 
@@ -12,7 +14,8 @@ import {
         AbsoluteCenter,
         HStack, 
         ProgressCircle, 
-        SimpleGrid } from '@chakra-ui/react'
+        SimpleGrid, 
+        Separator} from '@chakra-ui/react'
 
 import MovieSkeleton from './components/MovieSkeleton';
 
@@ -72,6 +75,7 @@ if (errGenre || searchErr)
 
 
   return (
+    <>
     
     <Grid templateAreas={{
       base:`'nav''main'`,
@@ -125,6 +129,12 @@ if (errGenre || searchErr)
       </GridItem>
 
     </Grid>
+    <Separator/>
+    <Box color={'gray.400'} display="flex" alignItems={'center'} justifyContent={'center'} margin={'20px'} as="footer">
+      <Heading marginRight={'10px'} textAlign={'center'} fontSize={'sm'}>© 2025 Movies Hub. Created by Sana Matusala</Heading>
+      <a className='about-me' href="https://github.com/matusalasana">About me</a>
+    </Box>
+    </>
 
   )
 }
