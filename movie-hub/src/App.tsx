@@ -92,10 +92,12 @@ if (errGenre || searchErr)
       <GridItem gridTemplateColumns={3} area={'main'} >
 
         <MovieHeading genreTitle={genretitle}/>
+
         <SortingMovies onSelectSortOrder={setSortOrder}/>
-        <SimpleGrid columns={{ base: 2, md: 3, lg: 3 }} gap={{base:3,md:4,lg:6}} p={4} >
-        {(loadingGenre||isSearchLoading)&& skeletons.map(skeleton=><MovieSkeleton key={skeleton} />)}
-        {filteredMovies.map(movie=>
+
+        <SimpleGrid columns={{ base: 2, md: 3, lg: 3,xl:4 }} gap={{base:3,md:4,lg:6}} p={4} >
+          {(loadingGenre||isSearchLoading)&& skeletons.map(skeleton=><MovieSkeleton key={skeleton} />)}
+          {filteredMovies.map(movie=>
         
                   Number(movie.vote_average)*10>=Number(movie.vote_average)*10 &&  
                     <Card.Root borderRadius={10} overflow={'hidden'} key={movie.id}>
@@ -118,7 +120,7 @@ if (errGenre || searchErr)
                             </ProgressCircle.Root>
                         </HStack>                
                     </Card.Root>)}
-    </SimpleGrid>
+        </SimpleGrid>
 
       </GridItem>
 
