@@ -1,43 +1,28 @@
-import { useState,useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
-export interface Genre{
-    name:string;
+
+interface Genre {
     id:number;
+    name:string;
 }
 
-const useGenres=()=> {
-  const [genres, setGenres] = useState<Genre[]>([]);
-  const [err,setErr]=useState('');
-  const [isLoading,setLoading]=useState(false)
-  
-  
-  
 
-    
-    useEffect(() => {
-      const getGenre = () => {
-        {setLoading(true)}
-        fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=4c0d21331fa20cabab38fd6698ec8aa9&language=en-US")
-          .then((res) =>res.json())
-          .then((json) => {
-            setGenres(json.genres),
-            setLoading(false)})
-          .catch(err=>{
-            setErr(err.message),
-            setLoading(false)})
-      };
-
-    getGenre(); 
-    }, [])
-
-    
-    return {genres,err,isLoading}
+function useGenres(){
 
 
-};
+  return useQuery<Genre[]>({
+    queryKey:['genres'],
+    queryFn:()=>
+      axios
+        .get('https://api.themoviedb.org/3/genre/movie/list',{
+          params:{
+            api_key:'4c0d21331fa20cabab38fd6698ec8aa9'
+          }
+        })
+        .then(response=>response.data.genres)
+  })
 
+}
 
-
-  
 export default useGenres
-
