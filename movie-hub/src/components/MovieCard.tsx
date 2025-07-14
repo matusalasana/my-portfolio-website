@@ -4,8 +4,12 @@ import useMovies from "./hooks/useMovies";
 import LoadingSkeleton from "./LoadingSkeleton";
 import { HiStar } from "react-icons/hi";
 
-function MovieCard() {
-  const { data: movies, isLoading } = useMovies();
+export interface Props{
+    genreId:number | null
+}
+
+function MovieCard({genreId}:Props) {
+  const { data: movies, isLoading } = useMovies(genreId,'');
 
   if (isLoading) return <LoadingSkeleton />;
 

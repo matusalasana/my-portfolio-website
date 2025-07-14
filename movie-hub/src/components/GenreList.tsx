@@ -1,7 +1,12 @@
 import { Box, Button, Heading, SimpleGrid } from "@chakra-ui/react";
 import useGenres from "./hooks/useGenres"
 
-function GenreList() {
+interface Props{
+  selectedGenre:number | null;
+  onSelectGenre:(id:number)=>void;
+}
+
+function GenreList({selectedGenre,onSelectGenre}:Props) {
 
     const {data:genres}=useGenres()
 
@@ -13,6 +18,9 @@ function GenreList() {
     {genres?.map(genre=>
       <Box>
         <Button
+          colorPalette={'blue'}
+          variant={selectedGenre==genre.id ? 'solid' : 'outline'}
+          onClick={()=>onSelectGenre(genre.id)}
           key={genre.id}
         >
           {genre.name}
