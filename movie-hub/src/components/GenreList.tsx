@@ -1,5 +1,6 @@
 import { Box, Text, Button, Heading, SimpleGrid } from "@chakra-ui/react";
 import useGenres from "./hooks/useGenres"
+import GenreSkeleton from "./GenreSkeleton";
 
 interface Props{
   selectedGenre:number | null;
@@ -11,6 +12,7 @@ function GenreList({selectedGenre,onSelectGenre}:Props) {
     const {data:genres,isLoading,error}=useGenres()
 
     if (error) return <Text>{error.message}</Text>
+    if (isLoading) return <GenreSkeleton/>
 
   return (
   <>
