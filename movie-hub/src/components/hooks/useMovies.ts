@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
-export interface Movie {
+
+interface Movie {
     id:number;
     title:string;
     poster_path: string;
@@ -8,41 +10,19 @@ export interface Movie {
     vote_average:number;
 }
 
-const useMovies=(genreId:number)=> {
 
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [err,setErr]=useState('');
-  const [isLoading,setLoading]=useState(false)
-    
-    useEffect(() => {
-      const getMovie = () => {
-        {setLoading(true)}
-        const url = genreId
-          ? `https://api.themoviedb.org/3/discover/movie?api_key=4c0d21331fa20cabab38fd6698ec8aa9&with_genres=${genreId}&language=en-US`
-          : `https://api.themoviedb.org/3/movie/popular?api_key=4c0d21331fa20cabab38fd6698ec8aa9&language=en-US`;
-
-        fetch(url)
-          .then((res) =>res.json())
-          .then((json) => {
-            setMovies(json.results),
-            setLoading(false)})
-          .catch(err=>{
-            setErr(err.message),
-            setLoading(false)})
-
-  };
-
-      getMovie();
-      document.title='The Movie Hub'
-    }, [genreId])
-
-            return {movies,err,isLoading}
+function useMovies(){
 
 
-};
+  return useQuery<Movie[]>({
+    queryKey:['movies'],
+    queryFn:()=>
+      axios
+        .get('https://api.themoviedb.org/3/discover/movie',{
+          params:{
+            api_key:'4c0d21331fa20cabab38fd6698ec8aa9'
+          }
+        })
+  })
 
-
-
-  
-  export default useMovies
-
+}
