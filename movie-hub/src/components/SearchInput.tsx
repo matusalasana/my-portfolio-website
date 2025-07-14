@@ -50,7 +50,7 @@ function SearchInput({onSearch}:props) {
                     <List.Indicator asChild>
                       {movie.genre_ids.includes(10770) ? <LuTv size={18} color='orange' /> : <FiFilm size={18} color='teal' />}
                     </List.Indicator>
-                    {movie.title}
+                    {movie.title} ({movie.release_date.slice(0,4)})
                   </List.Item>
                 </List.Root>
               </Box>

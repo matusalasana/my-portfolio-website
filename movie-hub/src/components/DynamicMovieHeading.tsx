@@ -3,7 +3,7 @@
 import { Heading } from '@chakra-ui/react'
 
 interface props{
-    genreTitle?: string;
+    genreTitle?: (string);
 }
 
 function DynamicMovieHeading({genreTitle}: props) {
