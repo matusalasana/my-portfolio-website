@@ -18,6 +18,8 @@ function GenreList({selectedGenre,onSelectGenre}:Props) {
     {genres?.map(genre=>
       <Box>
         <Button
+        width={'100%'}
+          margin={'5px'}
           colorPalette={'blue'}
           variant={selectedGenre==genre.id ? 'solid' : 'outline'}
           onClick={()=>onSelectGenre(genre.id)}

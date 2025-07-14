@@ -3,14 +3,16 @@ import { Text, Image, HStack, SimpleGrid, Box } from "@chakra-ui/react";
 import useMovies from "./hooks/useMovies";
 import LoadingSkeleton from "./LoadingSkeleton";
 import { HiStar } from "react-icons/hi";
+import useSearchMovies from "./hooks/useSearchMovies";
 
 export interface Props{
     genreId:number | null
     sortBy:string | null
+    searchQuery:string
 }
 
-function MovieCard({genreId,sortBy}:Props) {
-  const { data: movies, isLoading } = useMovies(genreId,sortBy);
+function MovieCard({genreId,sortBy,searchQuery}:Props) {
+  const { data: movies, isLoading } = searchQuery ?  useSearchMovies(searchQuery):useMovies(genreId,sortBy);
 
   if (isLoading) return <LoadingSkeleton />;
 

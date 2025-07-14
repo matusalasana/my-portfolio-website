@@ -9,7 +9,6 @@ import {
 
 import MovieHeading from './components/MovieHeading';
 import NavBar from './components/NavBar';
-import SelectTabs from './components/SelectTabs';
 import MoviesPage from './components/MoviesPage';
 
 function App() {
@@ -28,7 +27,6 @@ function App() {
 
       <GridItem area={'main'} >
         <MoviesPage/>
-        <SelectTabs/>
 
         <MovieHeading/>
 

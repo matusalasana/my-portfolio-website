@@ -4,33 +4,22 @@ import { useRef } from 'react';
 import { LuSearch } from 'react-icons/lu';
 
 interface props{
-    onSearch: (searchText:string)=> void;
+    onSearch: (query:string)=> void;
 }
 
 function SearchInput({onSearch}:props) {
     const ref= useRef<HTMLInputElement>(null)
   return (
-
-    <>
-    
-    
-    <form onSubmit={(event)=>{
-        event.preventDefault();
-        if (ref.current) onSearch(ref.current.value);
-    }}>
-        <InputGroup flex="1" startElement={<LuSearch />}>
+<InputGroup flex="1" startElement={<LuSearch />}>
         <Input
-                ref={ref}
-                padding={'20px'}
-                placeholder={'Search for a movie...'}
-                borderRadius={20}
-                variant={'subtle'}
+            onChange={(event)=>onSearch(event.target.value)}
+            ref={ref}
+            padding={'20px'}
+            placeholder={'Search for a movie or tv show'}
+            borderRadius={20}
+            variant={'subtle'}
             />
         </InputGroup>
-    </form>
-
-    </>
-
   )
 }
 
