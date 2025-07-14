@@ -1,35 +1,48 @@
-import { HStack } from "@chakra-ui/react";
+"use client"
 
-interface Props {
-  onSelectSortOrder: (order: string) => void;
+import { Portal, Select, createListCollection } from "@chakra-ui/react"
+
+interface Props{
+  onSortChange:(value:string)=>void
 }
 
-function SortingMovies({ onSelectSortOrder }: Props) {
-  const sortOrders = [
-    { value: '', label: 'Relevance' },
-    { value: 'title', label: 'A-Z' },
-    { value: 'new', label: 'Latest release' },
-    { value: 'old', label: 'Oldest release' },
-    { value: 'most-rated', label: 'Most rated' },
-    { value: 'least-rated', label: 'Least rated' }
-  ];
+function SortingMovies({onSortChange}:Props) {
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onSelectSortOrder(event.target.value);
-  };
+  const frameworks = createListCollection({
+  items: [
+    { label: "Alphabetical (A-Z)", value: "title.asc" },
+    { label: "Number of rating", value: "vote_count.desc" },
+    { label: "Popularity", value: "popularity.desc" },
+    { label: "Number of stars", value: "vote_average.desc" },
+  ],
+})
 
   return (
-    <HStack display={'flex'} className="sortby">
-    <p>Sort by:</p>
-    <select className="sort-selector" onChange={handleChange}>
-      {sortOrders.map((order) => (
-        <option key={order.value} value={order.value}>
-          {order.label}
-        </option>
-      ))}
-    </select>
-    </HStack>
-  );
+    <Select.Root onChange={(event)=>onSortChange((event.target as HTMLSelectElement).value)} collection={frameworks} size="sm" width="320px">
+      <Select.HiddenSelect />
+      <Select.Control>
+        <Select.Trigger>
+          <Select.ValueText placeholder="Sort movies" />
+        </Select.Trigger>
+        <Select.IndicatorGroup>
+          <Select.Indicator />
+        </Select.IndicatorGroup>
+      </Select.Control>
+      <Portal>
+        <Select.Positioner>
+          <Select.Content>
+            {frameworks.items.map((framework) => (
+              <Select.Item item={framework} key={framework.value}>
+                {framework.label}
+                <Select.ItemIndicator />
+              </Select.Item>
+            ))}
+          </Select.Content>
+        </Select.Positioner>
+      </Portal>
+    </Select.Root>
+  )
 }
 
-export default SortingMovies;
+
+export default SortingMovies
