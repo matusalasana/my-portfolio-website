@@ -19,10 +19,20 @@ function GenreList({selectedGenre,onSelectGenre}:Props) {
     <Heading fontSize={'2xl'} textAlign={'center'} >Genres</Heading>
     
     <SimpleGrid gapY={'10px'} columns={4}>
+      <Box>
+        <Button
+          width={'100%'}
+          margin={'5px'}
+          colorPalette={'blue'}
+          variant={selectedGenre==null ? 'solid' : 'outline'}
+          >
+          All
+        </Button>
+      </Box>
     {genres?.map(genre=>
       <Box>
         <Button
-        width={'100%'}
+          width={'100%'}
           margin={'5px'}
           colorPalette={'blue'}
           variant={selectedGenre==genre.id ? 'solid' : 'outline'}
