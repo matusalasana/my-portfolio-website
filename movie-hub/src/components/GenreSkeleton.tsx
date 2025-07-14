@@ -13,7 +13,7 @@ function GenreSkeleton() {
             width={'100%'}
             height={'40px'}
             margin={'5px'}
-            backgroundColor={'gray.500'}
+            backgroundColor={'gray.600'}
             key={skeleton}
         />
       </Box>

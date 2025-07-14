@@ -17,7 +17,7 @@ function useSearchMovies(query:string | null){
 
 
   return useQuery<Movie[]>({
-    queryKey:['movies',query],
+    queryKey:['search',query],
     queryFn:()=>
       axios
         .get('https://api.themoviedb.org/3/search/movie',{
@@ -32,5 +32,6 @@ function useSearchMovies(query:string | null){
   })
 
 }
+
 
 export default useSearchMovies

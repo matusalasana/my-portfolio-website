@@ -15,7 +15,7 @@ function MovieSkeleton() {
             borderRadius="10px"
             width={'100%'}
             height={'300px'}
-            backgroundColor={'gray.500'}
+            backgroundColor={'gray.600'}
         />
       ))}
     </SimpleGrid>

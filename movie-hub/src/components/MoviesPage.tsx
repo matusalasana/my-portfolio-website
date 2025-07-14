@@ -7,6 +7,7 @@ import SortingMovies from "./SortingMovies";
 import SearchInput from "./SearchInput";
 
 
+
 function MoviesPage() {
 
     const [genreId,setgenreid]=useState<number | null>(null)

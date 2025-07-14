@@ -24,9 +24,8 @@ function GenreList({selectedGenre,onSelectGenre}:Props) {
         <Button
         width={'100%'}
           margin={'5px'}
-          color={'white'}
-          backgroundColor={selectedGenre==genre.id ? 'blue.600' : 'blackAlpha.800'}
-          variant={'outline'}
+          colorPalette={'blue'}
+          variant={selectedGenre==genre.id ? 'solid' : 'outline'}
           onClick={()=>onSelectGenre(genre.id)}
           key={genre.id}
         >
