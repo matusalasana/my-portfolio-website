@@ -1,7 +1,7 @@
 
 import { Text, Image, HStack, SimpleGrid, Box } from "@chakra-ui/react";
 import useMovies from "./hooks/useMovies";
-import LoadingSkeleton from "./LoadingSkeleton";
+import MovieSkeleton from "./MovieSkeleton";
 import { HiStar } from "react-icons/hi";
 import useSearchMovies from "./hooks/useSearchMovies";
 
@@ -12,9 +12,10 @@ export interface Props{
 }
 
 function MovieCard({genreId,sortBy,searchQuery}:Props) {
-  const { data: movies, isLoading } = searchQuery ?  useSearchMovies(searchQuery):useMovies(genreId,sortBy);
+  const { data: movies, isLoading,error } = searchQuery ?  useSearchMovies(searchQuery):useMovies(genreId,sortBy);
 
-  if (isLoading) return <LoadingSkeleton />;
+  if (isLoading) return <MovieSkeleton />;
+  if (error) return <Text>{error.message}</Text>
 
   return (
     <SimpleGrid

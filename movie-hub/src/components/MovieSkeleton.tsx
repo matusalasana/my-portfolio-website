@@ -1,6 +1,6 @@
 import { SimpleGrid, Skeleton } from "@chakra-ui/react";
 
-function LoadingSkeleton() {
+function MovieSkeleton() {
   const skeletons= [1,2,3,4,5,6,7,8,9,10,11,12];
 
   return (
@@ -23,4 +23,4 @@ function LoadingSkeleton() {
 }
 
 
-export default LoadingSkeleton
+export default MovieSkeleton
