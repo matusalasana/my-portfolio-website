@@ -4,7 +4,7 @@ import GenreSkeleton from "./GenreSkeleton";
 
 interface Props{
   selectedGenre:number | null;
-  onSelectGenre:(id:number)=>void;
+  onSelectGenre:(id:number,name:string)=>void;
 }
 
 function GenreList({selectedGenre,onSelectGenre}:Props) {
@@ -26,7 +26,7 @@ function GenreList({selectedGenre,onSelectGenre}:Props) {
           margin={'5px'}
           colorPalette={'blue'}
           variant={selectedGenre==genre.id ? 'solid' : 'outline'}
-          onClick={()=>onSelectGenre(genre.id)}
+          onClick={()=>onSelectGenre(genre.id,genre.name)}
           key={genre.id}
         >
           {genre.name}

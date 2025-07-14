@@ -7,7 +7,6 @@ import {
         GridItem, 
         Separator} from '@chakra-ui/react'
 
-import MovieHeading from './components/MovieHeading';
 import NavBar from './components/NavBar';
 import MoviesPage from './components/MoviesPage';
 
@@ -27,8 +26,6 @@ function App() {
 
       <GridItem area={'main'} >
         <MoviesPage/>
-
-        <MovieHeading/>
 
       </GridItem>
     </Grid>
