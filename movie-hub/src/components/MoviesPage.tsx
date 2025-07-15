@@ -8,6 +8,7 @@ import SearchInput from "./SearchInput";
 import DynamicMovieHeading from "./DynamicMovieHeading";
 import { Box } from "@chakra-ui/react";
 import NavBar from "./NavBar";
+import MoviePagination from "./MoviePagination";
 
 
 
@@ -17,6 +18,7 @@ function MoviesPage() {
     const [sortBy,setSortBy]=useState< string | null>(null)
     const [query,setQuery]=useState<string>('')
     const [moviesHeading,setMoviesHeading]=useState('All')
+    const [page,setPage]=useState(1)
 
   return (
     <Box>
@@ -26,7 +28,8 @@ function MoviesPage() {
       <GenreList onClickAll={(defaultGenre)=>(setgenreid(defaultGenre),setMoviesHeading('All'))} selectedGenre={genreId} onSelectGenre={(id,genre)=>(setgenreid(id),setMoviesHeading(genre))} />
       <DynamicMovieHeading genreTitle={moviesHeading+" Movies"}/>
       <SortingMovies onSortChange={(value)=>setSortBy(value)}/>
-      <MovieCard searchQuery={query} sortBy={sortBy} genreId={genreId}/>
+      <MovieCard page={page} searchQuery={query} sortBy={sortBy} genreId={genreId}/>
+      <MoviePagination disabled={page==1 && true} onClickPrevious={()=>setPage(page-1)} onClickNext={()=>setPage(page+1)} />
     </Box>
   )
 }

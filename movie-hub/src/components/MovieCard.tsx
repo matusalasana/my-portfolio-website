@@ -9,10 +9,11 @@ export interface Props{
     genreId:number | null
     sortBy:string | null
     searchQuery:string
+    page:number
 }
 
-function MovieCard({genreId,sortBy,searchQuery}:Props) {
-  const { data: movies, isLoading,error } = searchQuery ?  useSearchMovies(searchQuery):useMovies(genreId,sortBy);
+function MovieCard({genreId,sortBy,searchQuery,page}:Props) {
+  const { data: movies, isLoading,error } = searchQuery ?  useSearchMovies(searchQuery):useMovies(genreId,sortBy,page);
 
   if (isLoading) return <MovieSkeleton />;
   if (error) return <Text>{error.message}</Text>

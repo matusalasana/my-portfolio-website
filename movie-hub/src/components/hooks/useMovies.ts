@@ -10,14 +10,15 @@ interface Movie {
     vote_average:number;
     vote_count:number;
     genre_ids:number;
+    total_pages:number
 }
 
 
-function useMovies(genreId:number | null,sortBy:string | null){
+function useMovies(genreId:number | null,sortBy:string | null, page:number){
 
 
   return useQuery<Movie[]>({
-    queryKey:['movies',sortBy,genreId],
+    queryKey:['movies',sortBy,genreId, page],
     queryFn:()=>
       axios
         .get('https://api.themoviedb.org/3/discover/movie',{
@@ -25,6 +26,7 @@ function useMovies(genreId:number | null,sortBy:string | null){
             api_key:'4c0d21331fa20cabab38fd6698ec8aa9',
             sort_by:sortBy,
             with_genres:genreId,
+            page:page
           }
         })
         .then(response=>response.data.results)
