@@ -1,6 +1,6 @@
 
 import { Box,List, Input, InputGroup, Spinner, SimpleGrid } from '@chakra-ui/react'
-import { LuSearch, LuTv} from 'react-icons/lu';
+import { LuSearch} from 'react-icons/lu';
 import useSearchMovies from './hooks/useSearchMovies';
 import { useState } from 'react';
 import { FiFilm } from 'react-icons/fi';
