@@ -5,9 +5,10 @@ import GenreSkeleton from "./GenreSkeleton";
 interface Props{
   selectedGenre:number | null;
   onSelectGenre:(id:number,name:string)=>void;
+  onClickAll:(all:null)=>void;
 }
 
-function GenreList({selectedGenre,onSelectGenre}:Props) {
+function GenreList({selectedGenre,onSelectGenre,onClickAll}:Props) {
 
     const {data:genres,isLoading,error}=useGenres()
 
@@ -21,6 +22,7 @@ function GenreList({selectedGenre,onSelectGenre}:Props) {
     <SimpleGrid gapY={'10px'} columns={4}>
       <Box>
         <Button
+          onClick={()=>onClickAll(null)}
           width={'100%'}
           margin={'5px'}
           colorPalette={'blue'}

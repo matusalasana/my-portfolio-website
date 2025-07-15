@@ -16,7 +16,7 @@ function SearchInput({onSearch}:props) {
   const {data:searchTerm,isLoading}=useSearchMovies(sugesstions)
 
   return (
-     <Box position={'relative'}>
+     <Box m={5} position={'relative'}>
 
         <InputGroup startElement={<LuSearch />}>
             <Input

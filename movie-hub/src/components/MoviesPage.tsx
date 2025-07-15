@@ -20,7 +20,7 @@ function MoviesPage() {
     <div>
         <SearchInput onSearch={(query)=>setQuery(query)}/>
         <SortingMovies onSortChange={(value)=>setSortBy(value)}/>
-        <GenreList selectedGenre={genreId} onSelectGenre={(id,genre)=>(setgenreid(id),setMoviesHeading(genre))} />
+        <GenreList onClickAll={(defaultGenre)=>(setgenreid(defaultGenre),setMoviesHeading('All'))} selectedGenre={genreId} onSelectGenre={(id,genre)=>(setgenreid(id),setMoviesHeading(genre))} />
         <DynamicMovieHeading genreTitle={moviesHeading}/>
         <MovieCard searchQuery={query} sortBy={sortBy} genreId={genreId}/>
     </div>

@@ -1,4 +1,3 @@
-"use client"
 
 import { Portal, Select, createListCollection } from "@chakra-ui/react"
 
@@ -18,28 +17,33 @@ function SortingMovies({onSortChange}:Props) {
 })
 
   return (
-    <Select.Root onChange={(event)=>onSortChange((event.target as HTMLSelectElement).value)} collection={frameworks} size="sm" width="320px">
-      <Select.HiddenSelect />
-      <Select.Control>
-        <Select.Trigger>
-          <Select.ValueText placeholder="Sort movies" />
-        </Select.Trigger>
-        <Select.IndicatorGroup>
-          <Select.Indicator />
-        </Select.IndicatorGroup>
-      </Select.Control>
-      <Portal>
-        <Select.Positioner>
-          <Select.Content>
-            {frameworks.items.map((framework) => (
-              <Select.Item item={framework} key={framework.value}>
-                {framework.label}
-                <Select.ItemIndicator />
-              </Select.Item>
-            ))}
-          </Select.Content>
-        </Select.Positioner>
-      </Portal>
+    <Select.Root 
+      onChange={(event)=>onSortChange((event.target as HTMLSelectElement).value)} 
+      collection={frameworks} 
+      size="md" 
+      width={'300px'}
+    >
+        <Select.HiddenSelect />
+        <Select.Control>
+          <Select.Trigger>
+            <Select.ValueText placeholder="Sort movies" />
+          </Select.Trigger>
+          <Select.IndicatorGroup>
+            <Select.Indicator />
+          </Select.IndicatorGroup>
+        </Select.Control>
+        <Portal>
+          <Select.Positioner>
+            <Select.Content boxShadow={'0 0 10px teal'} rounded={'md'} >
+              {frameworks.items.map((framework) => (
+                <Select.Item border={'2px solid'} margin={'1px'} borderColor={'gray.300'} item={framework} key={framework.value}>
+                  {framework.label}
+                  <Select.ItemIndicator />
+                </Select.Item>
+              ))}
+            </Select.Content>
+          </Select.Positioner>
+        </Portal>
     </Select.Root>
   )
 }
