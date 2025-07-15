@@ -6,7 +6,7 @@ Welcome to **The Movie Hub**, a dynamic and beautiful movie browsing experience 
 
 ## 🌐 Live Demo
 
-🔗 [Click here to try MovieVerse](https://the-movie-hub-pink.vercel.app/) 
+🔗 [Click here to try The Movie Hub](https://the-movie-hub-pink.vercel.app/) 
 
 ---
 
