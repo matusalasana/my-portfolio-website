@@ -17,16 +17,14 @@ function GenreList({selectedGenre,onSelectGenre,onClickAll}:Props) {
 
   return (
   <>
-    <Heading fontSize={'2xl'} textAlign={'center'} >Genres</Heading>
+    <Heading fontSize={'2xl'} textAlign={'center'} fontFamily={'sans-serif'} pt={5} >Genres</Heading>
     
-    <SimpleGrid gapY={'10px'} columns={4}>
+    <SimpleGrid padding={5} gap={'10px'} columns={{base:3,lg:10}}>
       <Box>
         <Button
           onClick={()=>onClickAll(null)}
           width={'100%'}
-          margin={'5px'}
-          colorPalette={'blue'}
-          variant={selectedGenre==null ? 'solid' : 'outline'}
+          variant={selectedGenre==null ? 'solid' : 'surface'}
           >
           All
         </Button>
@@ -35,9 +33,7 @@ function GenreList({selectedGenre,onSelectGenre,onClickAll}:Props) {
       <Box>
         <Button
           width={'100%'}
-          margin={'5px'}
-          colorPalette={'blue'}
-          variant={selectedGenre==genre.id ? 'solid' : 'outline'}
+          variant={selectedGenre==genre.id ? 'solid' : 'surface'}
           onClick={()=>onSelectGenre(genre.id,genre.name)}
           key={genre.id}
         >

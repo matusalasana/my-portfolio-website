@@ -8,7 +8,7 @@ interface props{
 
 function DynamicMovieHeading({genreTitle}: props) {
   return (
-    <Heading margin={'40px'} textAlign={'center'} fontSize={'2xl'} as={'h1'}>{genreTitle=='' ? "All Movies" : genreTitle +' '+"Movies"}</Heading>
+    <Heading  textAlign={'center'} fontSize={'2xl'} fontFamily={'sans-serif'} mt={'100px'} >{genreTitle=='' ? "All Movies" : genreTitle}</Heading>
   )
 }
 

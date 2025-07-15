@@ -1,15 +1,39 @@
 
-import { HStack, Text } from "@chakra-ui/react"
+import { HStack, SimpleGrid, Text } from "@chakra-ui/react"
 import ColorModeSwitch from "./ColorModeSwitch"
 import { IoFilmSharp } from "react-icons/io5"
 
-function NavBar() {
+
+interface props{
+  children:any
+}
+
+function NavBar({children}:props) {
   return (
-    <HStack justifyContent={'space-between'} padding={'10px'}>
+    <SimpleGrid padding={'10px'} backgroundColor={'#2e6ab2'}>
+    <HStack justifyContent={'space-between'}>
       <HStack>
-        <IoFilmSharp color="teal" size={50}/><Text fontFamily={'sans-serif'} fontSize={'xx-large'} fontWeight={'bold'} color={'red.700'}>The Movie Hub</Text></HStack>
-      <ColorModeSwitch/>
+        <IoFilmSharp 
+          size={50}
+          color='white'
+        />
+          <Text 
+            textAlign={'center'}
+            fontFamily={'sans-serif'} 
+            fontSize='xx-large'
+            color={'white'}
+          >
+            The Movie Hub
+          </Text>
+      </HStack>
+      <HStack>
+        <ColorModeSwitch/>
+      </HStack>
     </HStack>
+    <HStack mb={2} mt={5} display={'grid'} placeItems={'center'}>
+      {children}
+    </HStack>
+      </SimpleGrid>
   )
 }
 

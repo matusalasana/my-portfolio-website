@@ -4,9 +4,10 @@ import { LuSearch, LuTv} from 'react-icons/lu';
 import useSearchMovies from './hooks/useSearchMovies';
 import { useState } from 'react';
 import { FiFilm } from 'react-icons/fi';
+import { PiTelevisionSimpleFill } from 'react-icons/pi';
 
 
-interface props{
+export interface props{
     onSearch: (query:string)=> void
   }
 
@@ -16,29 +17,38 @@ function SearchInput({onSearch}:props) {
   const {data:searchTerm,isLoading}=useSearchMovies(sugesstions)
 
   return (
-     <Box m={5} position={'relative'}>
+     <Box  position={'relative'} >
 
-        <InputGroup startElement={<LuSearch />}>
-            <Input
-                onChange={(event)=>(setSugesstions(event.target.value))}
-                placeholder={'Search for a movie or tv show'}
-                borderRadius={20}
-                variant={'subtle'}
-            />
+        <InputGroup 
+          mb={2}
+          startElement={<LuSearch />}
+        >
+          <Input
+            _focus={{boxShadow:'0 0 15px blue'}}
+            onChange={(event)=>(setSugesstions(event.target.value))}
+            placeholder={'Search ...'}
+            borderRadius={20}
+            width={{base:'100%',lg:'400px'}}
+            backgroundColor={'white'}
+            color={'black'}
+          />
         </InputGroup>
 
-        {isLoading && <Spinner size="sm" position="absolute" top="10px" right="10px" />}
+        {isLoading && <Spinner color={'black'} size="sm" position="absolute" top="10px" right="10px" />}
 
         {searchTerm && (
-          <SimpleGrid>
+          <SimpleGrid borderRadius={5} >
             {searchTerm.map((movie: any) => (
               <Box>
-                <List.Root 
-                  _hover={{backgroundColor:'yellow.focusRing'}}
+                <List.Root
+                  bgColor={'blackAlpha.300'}
+                  color={'white'}
+                  borderRadius={5}
+                  _hover={{backgroundColor:'gray.800'}}
                   margin={'2px'}
-                  borderRadius={5} 
-                  padding={1} 
+                  padding={2} 
                   listStyle={'none'}
+                  width={'100%'}
                 >
                   <List.Item 
                     onClick={()=>(
@@ -48,9 +58,9 @@ function SearchInput({onSearch}:props) {
                     key={movie.id}
                   >
                     <List.Indicator asChild>
-                      {movie.genre_ids.includes(10770) ? <LuTv size={18} color='orange' /> : <FiFilm size={18} color='teal' />}
+                      {movie.genre_ids.includes(10770) ? <PiTelevisionSimpleFill size={22} color='black' /> : <FiFilm size={18} color='yellow' />}
                     </List.Indicator>
-                    {movie.title} ({movie.release_date.slice(0,4)})
+                    {movie.title}
                   </List.Item>
                 </List.Root>
               </Box>
