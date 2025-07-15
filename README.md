@@ -12,14 +12,13 @@ Welcome to **The Movie Hub**, a dynamic and beautiful movie browsing experience 
 
 ## 📸 Preview (Desktop)
 
-![MovieVerse Screenshot](https://github.com/matusalasana/my-portfolio-website/blob/main/movie-hub/src/assets/Desktop%20view%20screenshot.png)  
-<!-- Add a real screenshot from your app here -->
+![MovieVerse Screenshot](https://github.com/matusalasana/my-portfolio-website/blob/main/movie-hub/src/assets/Desktop preview.png)  
 
 ---
 
 ## 📸 Preview (Phone)
 
-<img width='300px' src='https://github.com/matusalasana/my-portfolio-website/blob/main/movie-hub/src/assets/Phone%20screenshot.jpg' alt='The movie hub phone screenshot'/>)  
+<img width='300px' src='https://github.com/matusalasana/my-portfolio-website/blob/main/movie-hub/src/assets/Phone preview.jpg' alt='The movie hub phone screenshot'/>)  
 
 ---
 
@@ -28,7 +27,6 @@ Welcome to **The Movie Hub**, a dynamic and beautiful movie browsing experience 
 - 🔍 **Global Search** – Find any movie across all genres instantly.
 - 🎭 **Genre Filtering** – Browse movies by your favorite genre with real-time updates.
 - 📊 **Sorting Options** – Sort movies by popularity, release date, or view count.
-- 🎞️ **Interactive Cards** – Click to play trailers or view detailed info.
 - ⚡ **Responsive Design** – Mobile-first and fast user experience.
 - 🎨 **Beautiful UI** – Built with Chakra UI for a modern look.
 
@@ -37,7 +35,7 @@ Welcome to **The Movie Hub**, a dynamic and beautiful movie browsing experience 
 ## 🛠️ Tech Stack
 
 - **Frontend:** React, Chakra UI
-- **API:** [TMDB (The Movie Database)](https://www.themoviedb.org/)
+- **API:** [TMDB (The Movie Database)](https://www.themoviedb.org/) by **Axios** and **ReactQuery** for fetching and caching
 - **Icons:** React Icons
 - **Styling:** CSS Modules / Chakra theming
 
@@ -46,8 +44,8 @@ Welcome to **The Movie Hub**, a dynamic and beautiful movie browsing experience 
 ## 📦 Installation
 
 ```bash
-git clone https://github.com/matusalasana/movieverse.git
-cd movieverse
+git clone https://github.com/matusalasana/my-portfolio-website.git
+cd movie-hub
 npm install
 npm start
 ```
