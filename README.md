@@ -12,7 +12,7 @@ Welcome to **The Movie Hub**, a dynamic and beautiful movie browsing experience 
 
 ## 📸 Preview (Desktop)
 
-![MovieVerse Screenshot](https://github.com/matusalasana/my-portfolio-website/blob/main/movie-hub/src/assets/Desktop preview.png)  
+![MovieVerse Screenshot](https://github.com/matusalasana/my-portfolio-website/blob/main/movie-hub/src/assets/Desktop%20preview.png)  
 
 ---
 
