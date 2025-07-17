@@ -1,5 +1,5 @@
 
-import { Box,List, Input, InputGroup, Spinner, SimpleGrid } from '@chakra-ui/react'
+import { Box,List, Input, InputGroup, Spinner } from '@chakra-ui/react'
 import { LuSearch} from 'react-icons/lu';
 import useSearchMovies from './hooks/useSearchMovies';
 import { useState } from 'react';
@@ -37,7 +37,7 @@ function SearchInput({onSearch}:props) {
         {isLoading && <Spinner color={'black'} size="sm" position="absolute" top="10px" right="10px" />}
 
         {searchTerm && (
-          <SimpleGrid borderRadius={5} >
+          <Box display={'flex'} scrollbar={'hidden'} height={'350px'} overflow={'scroll'} flexDirection={'column'} borderRadius={5} >
             {searchTerm.map((movie: any) => (
               <Box>
                 <List.Root
@@ -65,7 +65,7 @@ function SearchInput({onSearch}:props) {
                 </List.Root>
               </Box>
             ))}
-          </SimpleGrid>
+          </Box>
         )}
 
       </Box>
