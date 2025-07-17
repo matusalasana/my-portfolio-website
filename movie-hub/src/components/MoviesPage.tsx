@@ -9,6 +9,7 @@ import DynamicMovieHeading from "./DynamicMovieHeading";
 import { Box } from "@chakra-ui/react";
 import NavBar from "./NavBar";
 import MoviePagination from "./MoviePagination";
+import SearchSuggestions from "./SearchSuggestions";
 
 
 
@@ -23,8 +24,9 @@ function MoviesPage() {
   return (
     <Box>
       <NavBar 
-        children={<SearchInput onSearch={(query)=>(setQuery(query),setMoviesHeading(`search results for "${query}"`))}/>}
+        children={<SearchInput onUserInput={(Input)=>(setQuery(Input),setMoviesHeading(`search results for "${query}"`))}/>}
       />
+      <SearchSuggestions userInput={query}/>
       <GenreList onClickAll={(defaultGenre)=>(setgenreid(defaultGenre),setMoviesHeading('All'))} selectedGenre={genreId} onSelectGenre={(id,genre)=>(setgenreid(id),setMoviesHeading(genre))} />
       <DynamicMovieHeading genreTitle={moviesHeading+" Movies"}/>
       <SortingMovies onSortChange={(value)=>setSortBy(value)}/>
