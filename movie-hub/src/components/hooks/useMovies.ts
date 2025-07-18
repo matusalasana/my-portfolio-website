@@ -2,15 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 
-interface Movie {
+export interface Movie {
     id:number;
     title:string;
     poster_path: string;
     release_date:string;
     vote_average:number;
     vote_count:number;
-    genre_ids:number;
-    total_pages:number
+    genre_ids:number[];
 }
 
 

@@ -2,19 +2,21 @@ import { Box, List } from "@chakra-ui/react"
 import useSearchMovies from "./hooks/useSearchMovies"
 import { PiTelevisionSimpleFill } from "react-icons/pi";
 import { FiFilm } from "react-icons/fi";
+import type { Movie } from "./hooks/useMovies";
 
 interface Props{
     userInput:string;
+    onClickSuggestion:(movie:Movie[])=>void
 }
 
-function SearchSuggestions({userInput}:Props) {
+function SearchSuggestions({userInput, onClickSuggestion}:Props) {
 
 const {data:searchTerm}=useSearchMovies(userInput)
     
   return (
     <Box m={2}>
         {searchTerm && (
-            <Box 
+            <Box    
                 display={'flex'} 
                 scrollbar={'hidden'} 
                 height={'400px'} 
@@ -23,8 +25,9 @@ const {data:searchTerm}=useSearchMovies(userInput)
                 rounded={10} 
             >
                 {searchTerm.map((movie: any) => (
-                    <Box>
+                    <Box key={movie.id}>
                         <List.Root
+                        onClick={()=>onClickSuggestion([movie])}
                         borderRadius={5}
                         border={'2px solid skyblue'}
                         _hover={{backgroundColor:'gray.500'}}
