@@ -31,7 +31,7 @@ function MoviesPage() {
       <DynamicMovieHeading genreTitle={moviesHeading+" Movies"}/>
       <SortingMovies onSortChange={(value)=>setSortBy(value)}/>
       <MovieCard page={page} searchQuery={query} sortBy={sortBy} genreId={genreId}/>
-      <MoviePagination disabled={page==1 && true} onClickPrevious={()=>setPage(page-1)} onClickNext={()=>setPage(page+1)} />
+      <MoviePagination btnStatus={page==1 && true} onClickPrevious={()=>setPage(page-1)} onClickNext={()=>setPage(page+1)} />
     </Box>
   )
 }
